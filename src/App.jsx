@@ -1,9 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE
-  || (typeof window !== "undefined" && window.location.hostname !== "localhost"
-      ? "https://open-data-backend-eqic.onrender.com/api"
-      : "http://localhost:4000/api");
+const API_BASE = "https://open-data-worker.shahriyarhasan2020.workers.dev/api";
 
 // ── Source definitions ────────────────────────────────────────────────────────
 const COUNTRIES = [
@@ -75,7 +72,6 @@ function safeYear(v) {
 }
 
 function useDebounce(v, d) {
-  
   const [dv, setDv] = useState(v);
   useEffect(() => { const t = setTimeout(() => setDv(v), d); return () => clearTimeout(t); }, [v, d]);
   return dv;
